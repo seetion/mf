@@ -980,18 +980,18 @@ export async function render(view) {
     <div class="about-block">
       <div class="about-name">生产管理系统</div>
       <div class="about-desc">当前版本v1.6 · 纯静态版</div>
-      <div class="about-desc">面向生产车间的轻量级生产管理工具，覆盖生产日报录入、历史记录补录、生产进度跟踪、成品出入库与数据备份。</div>
-      <div class="about-meta">数据引擎：libSQL / Turso（浏览器直连）　·　前端：原生 ES Module　·　无需后端服务</div>
+      <div class="about-desc">面向生产车间的轻量级生产工单管理工具，覆盖生产日报录入、历史记录补录、生产进度跟踪、成品出入库与数据备份。</div>
+      <div class="about-meta">数据引擎：libSQL / Turso（浏览器直连）　·　前端：原生 ES Module　·　无需后端服务(node.js已失效)</div>
     </div>
     <div class="about-block">
-      <div class="about-sub">鸣谢</div>
       <div class="about-desc">本系统由个人独立开发、设计、调试、部署。</div>
+      <div class="about-sub">鸣谢</div>
       <div class="about-sub">在开发过程中，得到了以下工具与团队的支持，特此致谢：</div>
       <ul class="about-credits">
         <li><b>JoyCode</b> — AI 编程助手，陪伴全程开发与调试</li>
         <li><b>InsCode</b> — 开发者工具与社区支持</li>
         <li><b>ConeBuddy</b> — 灵感与陪伴</li>
-        <li><b>SeeTion</b> — 贵州希田智慧</li>
+        <li><b>SeeTion</b> — 贵州希田</li>
         <li><b>Comata</b> — 技术支持</li>
         <li><b>Turso</b> — （美国）云库技术支持</li>
         <li><b>Github</b> — （美国）全球最大开源代码库</li>
