@@ -991,7 +991,7 @@ export async function render(view) {
         <li><b>JoyCode</b> — AI 编程助手，陪伴全程开发与调试</li>
         <li><b>InsCode</b> — 开发者工具与社区支持</li>
         <li><b>ConeBuddy</b> — 灵感与陪伴</li>
-        <li><b>seetion</b> — 贵州希田</li>
+        <li><b>SeeTion</b> — 贵州希田智慧</li>
         <li><b>Comata</b> — 技术支持</li>
         <li><b>Turso</b> — （美国）云库技术支持</li>
         <li><b>Github</b> — （美国）全球最大开源代码库</li>

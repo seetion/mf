@@ -23,8 +23,15 @@ export async function render(view) {
 
   let rows = [];
   let filter = { q: '', status: '' };
+  let sortBy = 'last_date'; // 默认按最近日期排序
 
   const searchInput = el('input', { type: 'search', placeholder: '订单号 / 产品编号 / 名称' });
+  const sortSelect = el('select', { class: 'input-sm', style: 'width:auto', title: '排序方式' });
+  [['last_date', '按最近日期'], ['first_date', '按开始日期']].forEach(([v, t]) => {
+    sortSelect.appendChild(el('option', { value: v, text: t }));
+  });
+  sortSelect.value = sortBy;
+  sortSelect.addEventListener('change', () => { sortBy = sortSelect.value; load(); });
   const stat = el('span', { class: 'hint' });
   const btnNew = el('button', { class: 'btn btn-sm btn-primary', text: '＋ 手工建单' });
   const btnBatch = el('button', { class: 'btn btn-sm', text: '≡ 批量录入' });
@@ -53,7 +60,7 @@ export async function render(view) {
       el('div', { class: 'tools' }, [stat, btnRefresh, btnExport, btnBatch, btnNew]),
     ]),
     tabs,
-    el('div', { class: 'toolbar' }, [el('div', { class: 'search' }, [searchInput]), el('span', { class: 'hint', text: '可手动调整订单状态（结单 / 追加 为人工状态，不会被自动覆盖）' })]),
+    el('div', { class: 'toolbar' }, [el('div', { class: 'search' }, [searchInput]), sortSelect, el('span', { class: 'hint', text: '可手动调整订单状态（结单 / 追加 为人工状态，不会被自动覆盖）' })]),
     tableHost,
   ]);
   view.appendChild(panel);
@@ -307,6 +314,15 @@ export async function render(view) {
       rows = [];
       toast(e.message || '加载失败', 'error');
     }
+    // 前端排序：按选定日期降序（最近在前），无日期的排末尾
+    rows.sort((a, b) => {
+      const av = a[sortBy] || '';
+      const bv = b[sortBy] || '';
+      if (!av && !bv) return 0;
+      if (!av) return 1;
+      if (!bv) return -1;
+      return bv < av ? -1 : bv > av ? 1 : 0;
+    });
     const doing = rows.filter((r) => r.status === '开工').length;
     const done = rows.filter((r) => r.status === '完工' || r.status === '结单').length;
     stat.textContent = `共 ${rows.length} 单｜开工 ${doing}｜完工/结单 ${done}`;
