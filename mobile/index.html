@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1e3a5f">
+  <title>生产看板 · 移动端</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ==================== 登录页 ==================== -->
+  <div id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="icon">🏭</div>
+        <h1>生产看板</h1>
+        <p>移动端只读视图 · v1.0</p>
+      </div>
+      <div id="loginError" class="login-error"></div>
+      <div class="field" id="cfgField">
+        <label>哈希值码（由管理员提供）</label>
+        <input id="cfgInput" type="text" placeholder="请输入8位哈希值码" autocomplete="off" maxlength="20">
+      </div>
+      <div class="field">
+        <label>游客码</label>
+        <input id="guestInput" type="text" placeholder="请输入游客码" autocomplete="off">
+      </div>
+      <button id="btnLogin" class="btn btn-primary">连接并进入</button>
+      <div class="login-hint">数据库地址已内置，请输入哈希值码连接服务器<br>再输入游客码验证身份查看数据</div>
+    </div>
+  </div>
+
+  <!-- ==================== 主应用 ==================== -->
+  <div id="app" style="display:none">
+
+    <!-- 顶部栏 -->
+    <div class="topbar">
+      <div class="title" id="topTitle">概览</div>
+      <div class="user">
+        <span id="userName"></span>
+        <button class="btn-logout" id="btnLogout">退出</button>
+      </div>
+    </div>
+
+    <!-- 页面：概览 -->
+    <div id="pageHome" class="page active">
+      <div class="kpi-grid" id="kpiGrid">
+        <div class="kpi"><div class="k-value" id="kToday">-</div><div class="k-label">今日产量</div></div>
+        <div class="kpi"><div class="k-value green" id="kTotal">-</div><div class="k-label">累计总产量</div></div>
+        <div class="kpi"><div class="k-value orange" id="kOrders">-</div><div class="k-label">在制订单</div></div>
+        <div class="kpi"><div class="k-value purple" id="kStock">-</div><div class="k-label">库存合计</div></div>
+      </div>
+      <div class="section">
+        <div class="section-head">
+          <div class="s-title">📊 近期产量</div>
+          <div class="s-sub">含 UPPH</div>
+        </div>
+        <div id="recentList"></div>
+      </div>
+    </div>
+
+    <!-- 页面：库存 -->
+    <div id="pageStock" class="page">
+      <div class="section" style="margin-top:12px">
+        <div class="section-head">
+          <div class="s-title">📦 成品库存</div>
+          <div class="s-sub" id="stockCount"></div>
+        </div>
+        <div id="stockList"></div>
+      </div>
+    </div>
+
+    <!-- 页面：进度 -->
+    <div id="pageProgress" class="page">
+      <div class="section" style="margin-top:12px">
+        <div class="section-head">
+          <div class="s-title">📋 生产进度</div>
+          <div class="s-sub" id="orderCount"></div>
+        </div>
+        <div id="orderList"></div>
+      </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="tabbar">
+      <button class="tab active" data-page="pageHome">
+        <span class="t-icon">🏠</span>概览
+      </button>
+      <button class="tab" data-page="pageStock">
+        <span class="t-icon">📦</span>库存
+      </button>
+      <button class="tab" data-page="pageProgress">
+        <span class="t-icon">📋</span>进度
+      </button>
+    </div>
+
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
