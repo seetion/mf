@@ -215,9 +215,9 @@ export async function render(view) {
 
   btnDemo.addEventListener('click', () => {
     batchText.value = [
-      'P-1001,散热片,120×80×5mm,件',
+      'P-1001,风幕机,120×80×5mm,件',
       'P-1002,主板支架,300mm,个',
-      'P-1003,铝合金外壳,A型/银色,套',
+      'P-1003,电机,A型/银色,套',
       'P-1004,电源模块,24V 5A,只',
     ].join('\n');
   });
@@ -990,7 +990,7 @@ export async function render(view) {
       <ul class="about-credits">
         <li><b>JoyCode</b> — AI 编程助手，陪伴全程开发与调试</li>
         <li><b>InsCode</b> — 开发者工具与社区支持</li>
-        <li><b>ConeBuddy</b> — 灵感与陪伴</li>
+        <li><b>CodeBuddy</b> — 灵感与陪伴</li>
         <li><b>seetion</b> — 贵州希田</li>
         <li><b>Comata</b> — 技术支持</li>
         <li><b>Turso</b> — （美国）云库技术支持</li>
